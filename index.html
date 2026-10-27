@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>НиНочка — любительская футбольная команда</title>
+<meta name="description" content="Сайт любительской футбольной команды НиНочка: матчи, результаты, состав, контакты.">
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+:root{
+  --pink:#f7b3c8; --pink-soft:#fde6ee; --pink-hot:#e4457f;
+  --green:#0e7038; --forest:#073d20; --white:#fffafc;
+  --ink:#10281a;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",Roboto,system-ui,sans-serif;background:var(--white);color:var(--ink);line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink-hot);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+
+/* верхнее меню */
+nav{background:var(--forest);position:sticky;top:0;z-index:5}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+nav a{color:var(--pink);text-decoration:none;font-weight:600;font-size:.95rem;padding:6px 14px;border-radius:99px;white-space:nowrap}
+nav a:hover{background:var(--green);color:#fff}
+
+/* главный экран: розовая «форма» с диагональными полосками */
+.hero{background:
+  repeating-linear-gradient(115deg,transparent 0 46px,rgba(255,255,255,.55) 46px 48px),var(--pink);
+  padding:48px 0 0;position:relative}
+.hero .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:28px 40px;padding-bottom:48px}
+.logo{width:min(240px,60vw);aspect-ratio:1;border-radius:50%;background:#fff;
+  padding:6px;box-shadow:0 0 0 6px var(--green)}
+.logo img{width:100%;height:100%;object-fit:contain;border-radius:50%;display:block}
+.hero h1{font-size:clamp(2.8rem,10vw,5.2rem);line-height:.95;font-weight:900;letter-spacing:-.03em;color:var(--forest)}
+.hero p{font-size:1.15rem;max-width:30ch;margin-top:14px;color:var(--forest)}
+.stripes{height:30px;background:var(--green);border-top:6px solid #fff;position:relative}
+.stripes::after{content:"";position:absolute;inset:auto 0 6px 0;height:6px;background:#fff}
+
+section{padding:56px 0}
+h2{font-size:clamp(1.7rem,5vw,2.3rem);font-weight:800;letter-spacing:-.02em;color:var(--green);margin-bottom:20px}
+.note{font-size:.85rem;color:#5c6e63;margin-top:14px}
+
+
+/* фото команды */
+.team figure{margin:0 10px 10px 0}
+.team img{display:block;width:100%;height:auto;border-radius:20px;box-shadow:10px 10px 0 var(--pink)}
+.team figcaption{margin-top:22px;font-weight:700;color:var(--green);font-size:1.05rem}
+
+/* ближайший матч */
+.next{background:var(--green);color:#fff;border-radius:20px;padding:28px;display:grid;gap:18px;
+  grid-template-columns:1fr;border-left:14px solid var(--pink)}
+.next .vs{font-size:clamp(1.6rem,6vw,2.4rem);font-weight:800;line-height:1.15}
+.next dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px}
+.next dt{color:var(--pink)}
+.next dd{font-weight:600}
+
+/* результаты */
+.results{list-style:none;padding:0;display:grid;gap:10px}
+.results li{display:grid;grid-template-columns:70px 1fr auto;align-items:center;gap:12px;
+  background:var(--pink-soft);padding:14px 18px;border-radius:12px}
+.results .date{color:#5c6e63;font-size:.9rem}
+.results .score{font-weight:800;font-size:1.2rem;padding:2px 12px;border-radius:8px;background:var(--green);color:#fff}
+.results .score.lose{background:var(--pink-hot)}
+.results .score.draw{background:#6b7a71}
+
+/* состав: номера как на спинах футболок */
+.squad{background:var(--pink-soft)}
+.players{list-style:none;padding:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.players li{background:var(--pink);border-radius:16px;padding:16px;text-align:center;position:relative;overflow:hidden}
+.players .num{display:block;font-size:3.6rem;font-weight:900;line-height:1;color:var(--forest);
+  -webkit-text-stroke:2px #fff;paint-order:stroke fill}
+.players .name{display:block;font-weight:700;margin-top:6px}
+.players .pos{display:block;font-size:.85rem;color:var(--forest);opacity:.8}
+
+/* контакты */
+.links{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 22px;border-radius:99px;font-weight:700;text-decoration:none;
+  background:var(--green);color:#fff}
+.btn:hover{background:var(--forest)}
+.btn.alt{background:var(--pink);color:var(--forest)}
+.btn.alt:hover{background:var(--pink-hot);color:#fff}
+
+footer{background:var(--forest);color:var(--pink);text-align:center;padding:26px 20px;font-size:.9rem}
+
+@media(min-width:700px){.next{grid-template-columns:1.2fr 1fr;align-items:center}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#team">Команда</a>
+    <a href="#match">Матч</a>
+    <a href="#results">Результаты</a>
+    <a href="#squad">Состав</a>
+    <a href="#contacts">Контакты</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="logo"><img src="logo.png" alt="Герб команды НиНочка: зелёный щит с буквами NN, розовые цветы и мяч" width="800" height="800"></div>
+    <div>
+      <h1>НиНочка</h1>
+      <p>Любительская футбольная команда. Играем ради удовольствия, побеждаем по настроению.</p>
+    </div>
+  </div>
+  <div class="stripes"></div>
+</header>
+
+<main>
+<section id="team" class="team">
+  <div class="wrap">
+    <h2>Мы — НиНочка</h2>
+    <figure>
+      <img src="team.jpg" width="1280" height="960" alt="Команда НиНочка в розово-зелёной форме на футбольном поле с плакатом «Вперёд к победе, мы с вами»">
+      <figcaption>Вперёд к победе, мы с вами!</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="match">
+  <div class="wrap">
+    <h2>Ближайший матч</h2>
+    <div class="next">
+      <div class="vs">НиНочка<br>против «Соперник»</div>
+      <dl>
+        <dt>Дата</dt><dd>Суббота, 8 ноября</dd>
+        <dt>Время</dt><dd>19:00</dd>
+        <dt>Место</dt><dd>Стадион «Название», поле 2</dd>
+      </dl>
+    </div>
+    <p class="note">Данные примерные — замените на настоящие.</p>
+  </div>
+</section>
+
+<section id="results" style="padding-top:0">
+  <div class="wrap">
+    <h2>Результаты</h2>
+    <ul class="results">
+      <li><span class="date">25.10</span><span>НиНочка — Соперник 1</span><span class="score">3:1</span></li>
+      <li><span class="date">18.10</span><span>НиНочка — Соперник 2</span><span class="score draw">2:2</span></li>
+      <li><span class="date">11.10</span><span>НиНочка — Соперник 3</span><span class="score lose">0:1</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="squad" class="squad">
+  <div class="wrap">
+    <h2>Состав</h2>
+    <ul class="players">
+      <li><span class="num">1</span><span class="name">Имя Фамилия</span><span class="pos">Вратарь</span></li>
+      <li><span class="num">5</span><span class="name">Имя Фамилия</span><span class="pos">Защитник</span></li>
+      <li><span class="num">8</span><span class="name">Имя Фамилия</span><span class="pos">Полузащитник</span></li>
+      <li><span class="num">10</span><span class="name">Имя Фамилия</span><span class="pos">Капитан</span></li>
+      <li><span class="num">11</span><span class="name">Имя Фамилия</span><span class="pos">Нападающий</span></li>
+      <li><span class="num">23</span><span class="name">Имя Фамилия</span><span class="pos">Нападающий</span></li>
+    </ul>
+    <p class="note">Список примерный — впишите настоящих игроков.</p>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="wrap">
+    <h2>Хотите играть с нами?</h2>
+    <p style="margin-bottom:20px;max-width:50ch">Напишите нам, и мы расскажем, когда и где тренируемся.</p>
+    <div class="links">
+      <a class="btn" href="https://t.me/">Telegram</a>
+      <a class="btn alt" href="https://vk.com/">ВКонтакте</a>
+      <a class="btn alt" href="mailto:team@example.com">Почта</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© НиНочка, 2026</footer>
+</body>
+</html>
