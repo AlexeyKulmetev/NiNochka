@@ -43,10 +43,12 @@ h2{font-size:clamp(1.7rem,5vw,2.3rem);font-weight:800;letter-spacing:-.02em;colo
 .note{font-size:.85rem;color:#5c6e63;margin-top:14px}
 
 
-/* фото команды */
-.team figure{margin:0 10px 10px 0}
+/* фото команды: вертикальный кадр рядом с текстом */
+.team .wrap{display:grid;gap:32px 48px;align-items:center}
+.team figure{margin:0 10px 10px 0;max-width:440px}
 .team img{display:block;width:100%;height:auto;border-radius:20px;box-shadow:10px 10px 0 var(--pink)}
-.team figcaption{margin-top:22px;font-weight:700;color:var(--green);font-size:1.05rem}
+.team .motto{font-size:clamp(1.5rem,4.5vw,2.3rem);font-weight:800;line-height:1.2;letter-spacing:-.01em;color:var(--forest);max-width:22ch}
+@media(min-width:760px){.team .wrap{grid-template-columns:minmax(0,440px) 1fr}}
 
 /* ближайший матч */
 .next{background:var(--green);color:#fff;border-radius:20px;padding:28px;display:grid;gap:18px;
@@ -114,11 +116,13 @@ footer{background:var(--forest);color:var(--pink);text-align:center;padding:26px
 <main>
 <section id="team" class="team">
   <div class="wrap">
-    <h2>Мы — НиНочка</h2>
     <figure>
-      <img src="team.jpg" width="1280" height="960" alt="Команда НиНочка в розово-зелёной форме на футбольном поле с плакатом «Вперёд к победе, мы с вами»">
-      <figcaption>Вперёд к победе, мы с вами!</figcaption>
+      <img src="team.jpg" width="995" height="1280" alt="Игроки НиНочки в розово-зелёной форме идут по полю, вид сверху сзади">
     </figure>
+    <div>
+      <h2>Мы — НиНочка</h2>
+      <p class="motto">Выходим на поле ради футбола, друзей и хорошего настроения.</p>
+    </div>
   </div>
 </section>
 
